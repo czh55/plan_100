@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="退休后的一百件事 —— 从日常念头里，慢慢凑齐一百件值得去做的事" />
+  <title>退休后的一百件事</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="atmosphere" aria-hidden="true">
+    <div class="horizon"></div>
+    <div class="grain"></div>
+  </div>
+
+  <header class="hero">
+    <p class="brand">Plan 100</p>
+    <h1 id="site-title">退休后的一百件事</h1>
+    <p class="lede" id="site-subtitle">从日常念头里，慢慢凑齐一百件值得去做的事</p>
+
+    <div class="progress-block" aria-live="polite">
+      <div class="progress-ring" role="img" aria-label="收集进度">
+        <svg viewBox="0 0 120 120" width="120" height="120">
+          <circle class="ring-track" cx="60" cy="60" r="52" />
+          <circle class="ring-fill" id="ring-fill" cx="60" cy="60" r="52" />
+        </svg>
+        <div class="progress-num">
+          <span id="count-current">0</span>
+          <span class="progress-sep">/</span>
+          <span id="count-goal">100</span>
+        </div>
+      </div>
+      <div class="progress-copy">
+        <p class="progress-label">已收录</p>
+        <p class="progress-hint" id="progress-hint">每一条日常念头，都算数。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="toolbar" aria-label="筛选与操作">
+      <div class="filters" id="filters" role="tablist" aria-label="按分类筛选"></div>
+      <div class="toolbar-actions">
+        <label class="status-filter">
+          <span class="sr-only">状态</span>
+          <select id="status-filter" aria-label="按状态筛选">
+            <option value="all">全部状态</option>
+            <option value="idea">念头</option>
+            <option value="planned">打算做</option>
+            <option value="doing">进行中</option>
+            <option value="done">已完成</option>
+          </select>
+        </label>
+        <button type="button" class="btn btn-primary" id="btn-add">记下一条</button>
+      </div>
+    </section>
+
+    <section class="stats" id="stats" aria-label="分类概览"></section>
+
+    <section class="board" aria-label="事项列表">
+      <ul class="item-list" id="item-list"></ul>
+      <p class="empty" id="empty-state" hidden>还没有符合条件的条目。从今天的一个念头开始吧。</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>数据保存在 <code>data/items.json</code> · 浏览器里可先记草稿，再导出写回仓库</p>
+    <div class="footer-actions">
+      <button type="button" class="btn btn-ghost" id="btn-export">导出 JSON</button>
+      <button type="button" class="btn btn-ghost" id="btn-reset-draft">清除本地草稿</button>
+    </div>
+  </footer>
+
+  <dialog class="modal" id="item-modal" aria-labelledby="modal-title">
+    <form method="dialog" id="item-form" class="modal-panel">
+      <header class="modal-header">
+        <h2 id="modal-title">记下一条</h2>
+        <button type="submit" value="cancel" class="icon-close" aria-label="关闭">×</button>
+      </header>
+
+      <div class="modal-body">
+        <label>
+          想做的事
+          <input type="text" name="title" id="field-title" required maxlength="80" placeholder="例如：学会修一把椅子" />
+        </label>
+        <label>
+          分类
+          <select name="category" id="field-category" required></select>
+        </label>
+        <label>
+          状态
+          <select name="status" id="field-status">
+            <option value="idea">念头</option>
+            <option value="planned">打算做</option>
+            <option value="doing">进行中</option>
+            <option value="done">已完成</option>
+          </select>
+        </label>
+        <label>
+          念头从哪来
+          <input type="text" name="source" id="field-source" maxlength="40" placeholder="日常 / 旅行 / 聊天 / 读书…" />
+        </label>
+        <label>
+          备注
+          <textarea name="note" id="field-note" rows="3" maxlength="280" placeholder="为什么想做、什么时候想到的…"></textarea>
+        </label>
+      </div>
+
+      <footer class="modal-footer">
+        <button type="submit" value="cancel" class="btn btn-ghost">取消</button>
+        <button type="submit" value="save" class="btn btn-primary" id="btn-save">保存到本地</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <script src="js/app.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "title": "退休后的一百件事",
+    "subtitle": "从日常念头里，慢慢凑齐一百件值得去做的事",
+    "goal": 100,
+    "updated": "2026-10-08"
+  },
+  "categories": [
+    { "id": "travel", "name": "旅行与探索", "color": "#2a6f6a" },
+    { "id": "learn", "name": "学习与创造", "color": "#3d5a80" },
+    { "id": "body", "name": "身体与健康", "color": "#6b8f71" },
+    { "id": "people", "name": "人际与家庭", "color": "#b07d62" },
+    { "id": "ritual", "name": "日常仪式", "color": "#8b7355" },
+    { "id": "craft", "name": "兴趣与手艺", "color": "#7a6c8a" },
+    { "id": "give", "name": "公益与贡献", "color": "#5c7a8a" },
+    { "id": "other", "name": "未分类", "color": "#6e6e6e" }
+  ],
+  "items": [
+    {
+      "id": 1,
+      "title": "用一整周时间，只做一件慢事",
+      "category": "ritual",
+      "status": "idea",
+      "note": "比如只读一本书、只学一道菜、只走一条河岸。先从日常念头记起。",
+      "added": "2026-10-08",
+      "source": "日常念头"
+    }
+  ]
+}
