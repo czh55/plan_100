@@ -41,9 +41,27 @@
   </header>
 
   <main class="main">
+    <section class="gov-bar" id="gov-bar" aria-label="增质治理">
+      <div class="gov-metrics" id="gov-metrics"></div>
+      <div class="gov-actions">
+        <button type="button" class="btn btn-ghost" id="btn-apply-decay">执行过期沉降</button>
+        <button type="button" class="btn btn-primary" id="btn-review">本周质检</button>
+      </div>
+    </section>
+
     <section class="toolbar" aria-label="筛选与操作">
       <div class="filters" id="filters" role="tablist" aria-label="按分类筛选"></div>
       <div class="toolbar-actions">
+        <label class="status-filter">
+          <span class="sr-only">生命周期</span>
+          <select id="lane-filter" aria-label="按生命周期筛选">
+            <option value="all">全部生命周期</option>
+            <option value="draft">草稿</option>
+            <option value="active">活跃</option>
+            <option value="dormant">休眠</option>
+            <option value="archived">归档</option>
+          </select>
+        </label>
         <label class="status-filter">
           <span class="sr-only">状态</span>
           <select id="status-filter" aria-label="按状态筛选">
@@ -67,7 +85,7 @@
   </main>
 
   <footer class="footer">
-    <p>数据保存在 <code>data/items.json</code> · 浏览器里可先记草稿，再导出写回仓库</p>
+    <p>规则在浏览器里执行 · 权威数据仍是 <code>data/items.json</code> · 导出后写回仓库即上线</p>
     <div class="footer-actions">
       <button type="button" class="btn btn-ghost" id="btn-export">导出 JSON</button>
       <button type="button" class="btn btn-ghost" id="btn-reset-draft">清除本地草稿</button>
@@ -75,7 +93,7 @@
   </footer>
 
   <dialog class="modal" id="item-modal" aria-labelledby="modal-title">
-    <form method="dialog" id="item-form" class="modal-panel">
+    <form method="dialog" id="item-form" class="modal-panel modal-wide">
       <header class="modal-header">
         <h2 id="modal-title">记下一条</h2>
         <button type="submit" value="cancel" class="icon-close" aria-label="关闭">×</button>
@@ -86,18 +104,41 @@
           想做的事
           <input type="text" name="title" id="field-title" required maxlength="80" placeholder="例如：学会修一把椅子" />
         </label>
+        <div class="field-row">
+          <label>
+            分类
+            <select name="category" id="field-category" required></select>
+          </label>
+          <label>
+            状态
+            <select name="status" id="field-status">
+              <option value="idea">念头</option>
+              <option value="planned">打算做</option>
+              <option value="doing">进行中</option>
+              <option value="done">已完成</option>
+            </select>
+          </label>
+          <label>
+            生命周期
+            <select name="lane" id="field-lane">
+              <option value="draft">草稿（不占槽）</option>
+              <option value="active">活跃（占槽）</option>
+              <option value="dormant">休眠</option>
+              <option value="archived">归档</option>
+            </select>
+          </label>
+        </div>
         <label>
-          分类
-          <select name="category" id="field-category" required></select>
+          出生证明 · 若丢掉它，我会失去什么？
+          <textarea name="whyLose" id="field-why-lose" rows="2" maxlength="200" required placeholder="写不出就先留在草稿，别占活跃槽"></textarea>
         </label>
         <label>
-          状态
-          <select name="status" id="field-status">
-            <option value="idea">念头</option>
-            <option value="planned">打算做</option>
-            <option value="doing">进行中</option>
-            <option value="done">已完成</option>
-          </select>
+          轨道 B · 怎样才算它真的有价值？
+          <textarea name="signal" id="field-signal" rows="2" maxlength="200" required placeholder="可观察的结果，不是「感觉还不错」"></textarea>
+        </label>
+        <label>
+          新建税 · 为何不能并入已有条目？（新建时填写）
+          <input type="text" name="mergeOf" id="field-merge-of" maxlength="120" placeholder="例如：与「慢事周」不同，因为……；并入则可写：并入 #1" />
         </label>
         <label>
           念头从哪来
@@ -105,15 +146,35 @@
         </label>
         <label>
           备注
-          <textarea name="note" id="field-note" rows="3" maxlength="280" placeholder="为什么想做、什么时候想到的…"></textarea>
+          <textarea name="note" id="field-note" rows="2" maxlength="280" placeholder="为什么想做、什么时候想到的…"></textarea>
         </label>
+        <p class="form-hint" id="slot-hint"></p>
       </div>
 
       <footer class="modal-footer">
         <button type="submit" value="cancel" class="btn btn-ghost">取消</button>
+        <button type="button" class="btn btn-ghost" id="btn-renew" hidden>续命 90 天</button>
         <button type="submit" value="save" class="btn btn-primary" id="btn-save">保存到本地</button>
       </footer>
     </form>
+  </dialog>
+
+  <dialog class="modal" id="review-modal" aria-labelledby="review-title">
+    <div class="modal-panel modal-wide">
+      <header class="modal-header">
+        <h2 id="review-title">本周质检</h2>
+        <button type="button" class="icon-close" id="review-close" aria-label="关闭">×</button>
+      </header>
+      <div class="modal-body">
+        <p class="form-hint">从活跃槽随机抽若干条。对每条做「杀伤测试」：若它其实不重要，你敢把它降为休眠吗？</p>
+        <ul class="review-list" id="review-list"></ul>
+        <p class="empty" id="review-empty" hidden>当前没有活跃条目可抽检。</p>
+      </div>
+      <footer class="modal-footer">
+        <button type="button" class="btn btn-ghost" id="review-reshuffle">换一批</button>
+        <button type="button" class="btn btn-primary" id="review-done">完成本周质检</button>
+      </footer>
+    </div>
   </dialog>
 
   <script src="js/app.js" type="module"></script>

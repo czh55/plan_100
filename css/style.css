@@ -203,6 +203,61 @@ body {
   padding: 0 1.5rem 4rem;
 }
 
+.gov-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding: 1rem 1.15rem;
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--line);
+  animation: rise 1s 0.2s ease both;
+}
+
+.gov-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.gov-chip {
+  display: grid;
+  gap: 0.1rem;
+  min-width: 4.5rem;
+  padding: 0.45rem 0.7rem;
+  border-radius: 12px;
+  background: rgba(31, 92, 86, 0.06);
+}
+
+.gov-chip .k {
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  opacity: 0.75;
+}
+
+.gov-chip .v {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--teal-deep);
+}
+
+.gov-chip.warn {
+  background: rgba(184, 146, 58, 0.18);
+}
+
+.gov-chip.warn .v {
+  color: #8a6a1f;
+}
+
+.gov-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
 .toolbar {
   display: flex;
   flex-wrap: wrap;
@@ -351,6 +406,79 @@ body {
 .item:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow);
+}
+
+.item-expired {
+  border-color: rgba(184, 146, 58, 0.55);
+  background: rgba(255, 248, 230, 0.7);
+}
+
+.lane-dormant,
+.lane-archived {
+  opacity: 0.78;
+}
+
+.tag-warn {
+  background: rgba(184, 146, 58, 0.22) !important;
+  color: #7a5c14 !important;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.form-hint {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  opacity: 0.85;
+}
+
+.form-hint.warn {
+  color: #8a6a1f;
+  opacity: 1;
+}
+
+.modal-wide {
+  width: min(560px, 100%);
+}
+
+.modal-panel.modal-wide {
+  width: min(560px, 100%);
+}
+
+.review-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.review-item {
+  padding: 0.9rem 1rem;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.review-item h3 {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+}
+
+.review-item p {
+  margin: 0.35rem 0;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.review-item.reviewed {
+  opacity: 0.65;
+  border-color: rgba(31, 92, 86, 0.35);
 }
 
 .item-index {
@@ -540,6 +668,10 @@ body {
 
   .progress-hint {
     max-width: none;
+  }
+
+  .field-row {
+    grid-template-columns: 1fr;
   }
 
   .item {

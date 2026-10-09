@@ -3,7 +3,12 @@
     "title": "退休后的一百件事",
     "subtitle": "从日常念头里，慢慢凑齐一百件值得去做的事",
     "goal": 100,
-    "updated": "2026-10-08"
+    "updated": "2026-10-09",
+    "governance": {
+      "activeSlots": 20,
+      "ttlDays": 90,
+      "archiveAfterDormantDays": 90
+    }
   },
   "categories": [
     { "id": "travel", "name": "旅行与探索", "color": "#2a6f6a" },
@@ -21,9 +26,15 @@
       "title": "用一整周时间，只做一件慢事",
       "category": "ritual",
       "status": "idea",
+      "lane": "active",
       "note": "比如只读一本书、只学一道菜、只走一条河岸。先从日常念头记起。",
+      "whyLose": "若丢掉这条，我会重新陷入「什么都想做、什么都没做完」的日常。",
+      "signal": "真的完整做完过一次「只做一件慢事」的一周。",
+      "mergeOf": "",
+      "source": "日常念头",
       "added": "2026-10-08",
-      "source": "日常念头"
+      "renewed": "2026-10-08",
+      "lastReviewed": ""
     }
   ]
 }
