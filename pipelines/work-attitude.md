@@ -1,6 +1,7 @@
 # 如何减少对工作的消极态度
 
-本项目 pipeline：`work-attitude`
+本项目 pipeline：`work-attitude`  
+来源：自己定义
 
 ## 两条硬原则（不可改写）
 

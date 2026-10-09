@@ -99,15 +99,24 @@ python3 -m http.server 8080
 登记：`data/pipelines.json`（活跃槽默认 8，规则同增质治理）。  
 说明：`pipelines/<id>.md`。
 
+### 来源 `origin`
+
+| 值 | 含义 | 额外字段 |
+|----|------|----------|
+| `self` | 自己定义 | — |
+| `borrowed` | 拿来主义（学自他人） | 建议填 `originNote` 写出处 |
+
+页面可按来源筛选；拿来的要写清出处，自己的写清验证场景。
+
 当前活跃：
 
-1. **数据分析型汇报材料组织**（`data-report-org`）
+1. **数据分析型汇报材料组织**（`data-report-org` · 自己定义）
    - 通俗但不删数据
    - 没有新定义词汇，写给第一次阅读的人
    - 顺着读者的疑问组织结构，而不是按照资料本身的结构
    - 说明：[pipelines/data-report-org.md](pipelines/data-report-org.md)
 
-2. **如何减少对工作的消极态度**（`work-attitude`）
+2. **如何减少对工作的消极态度**（`work-attitude` · 自己定义）
    - 中性的事情调整心态：不要把自己的事情和工作的事情对立，他们的工作内容不同，但是对人训练的能力是共通的。比如果汇报能力就是沟通能力，团队能力就是就是你出去玩的组织能力
    - 恶性的事情调整心态：不要下意识恶化别人和事情，所谓的妖魔化。否则很容易沉溺在消极的情绪中，让本身不一定坏的事情变成必然的坏
    - 说明：[pipelines/work-attitude.md](pipelines/work-attitude.md)

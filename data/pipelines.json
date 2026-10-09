@@ -4,6 +4,10 @@
     "subtitle": "可复用的做事流水线；默认会死，少数才能活",
     "updated": "2026-10-09",
     "charter": "data/charter.json",
+    "origins": {
+      "self": "自己定义",
+      "borrowed": "拿来主义"
+    },
     "governance": {
       "activeSlots": 8,
       "ttlDays": 90,
@@ -14,6 +18,8 @@
     {
       "id": "data-report-org",
       "title": "数据分析型汇报材料组织",
+      "origin": "self",
+      "originNote": "",
       "lane": "active",
       "status": "doing",
       "principles": [
@@ -32,6 +38,8 @@
     {
       "id": "work-attitude",
       "title": "如何减少对工作的消极态度",
+      "origin": "self",
+      "originNote": "",
       "lane": "active",
       "status": "doing",
       "principles": [

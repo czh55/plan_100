@@ -517,6 +517,16 @@ body {
   color: #7a5c14 !important;
 }
 
+.tag-origin-self {
+  background: rgba(31, 92, 86, 0.14) !important;
+  color: var(--teal-deep) !important;
+}
+
+.tag-origin-borrowed {
+  background: rgba(61, 90, 128, 0.14) !important;
+  color: #3d5a80 !important;
+}
+
 .field-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
