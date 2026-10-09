@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Plan 100 Pipelines —— 可复用的做事流水线" />
+  <title>Plan 100 · Pipelines</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="atmosphere" aria-hidden="true">
+    <div class="horizon"></div>
+    <div class="grain"></div>
+  </div>
+
+  <header class="hero">
+    <p class="brand"><a class="brand-link" href="index.html">Plan 100</a></p>
+    <h1>Pipelines</h1>
+    <p class="lede" id="site-subtitle">可复用的做事流水线；默认会死，少数才能活</p>
+    <p class="north-star" id="north-star">我有信心能够处理好生活中的各种事情。</p>
+
+    <div class="progress-block" aria-live="polite">
+      <div class="progress-ring" role="img" aria-label="活跃流水线">
+        <svg viewBox="0 0 120 120" width="120" height="120">
+          <circle class="ring-track" cx="60" cy="60" r="52" />
+          <circle class="ring-fill" id="ring-fill" cx="60" cy="60" r="52" />
+        </svg>
+        <div class="progress-num">
+          <span id="count-current">0</span>
+          <span class="progress-sep">/</span>
+          <span id="count-goal">8</span>
+        </div>
+      </div>
+      <div class="progress-copy">
+        <p class="progress-label">活跃槽</p>
+        <p class="progress-hint" id="progress-hint">新建流水线前先问：能否并入已有一条。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <nav class="site-nav" aria-label="站点导航">
+      <a href="index.html">一百件事</a>
+      <a href="pipelines.html" aria-current="page">Pipelines</a>
+    </nav>
+
+    <section class="charter" id="charter" aria-label="项目原则"></section>
+
+    <section class="gov-bar" aria-label="流水线治理摘要">
+      <div class="gov-metrics" id="gov-metrics"></div>
+    </section>
+
+    <section class="board" aria-label="流水线列表">
+      <ul class="item-list" id="pipeline-list"></ul>
+      <p class="empty" id="empty-state" hidden>还没有流水线。</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>登记在 <code>data/pipelines.json</code> · 步骤说明在 <code>pipelines/</code> · 与一百件事共用增质规则</p>
+  </footer>
+
+  <script src="js/pipelines.js" type="module"></script>
+</body>
+</html>

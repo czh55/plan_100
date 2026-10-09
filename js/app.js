@@ -1,3 +1,5 @@
+import { loadCharter, renderCharter } from "./charter.js";
+
 const DRAFT_KEY = "plan100.draft.v1";
 const REVIEW_KEY = "plan100.review.v1";
 
@@ -31,6 +33,13 @@ async function boot() {
   const draft = loadDraft();
   state.data = draft ? mergeDraft(base, draft) : structuredClone(base);
   normalizeGovernance();
+  try {
+    const charter = await loadCharter();
+    if (charter.northStar) $("#north-star").textContent = charter.northStar;
+    renderCharter(charter, $("#charter"));
+  } catch (err) {
+    console.error(err);
+  }
   if (draft) {
     $("#progress-hint").textContent = "本地有未导出的草稿，记得导出后写回仓库。";
   }

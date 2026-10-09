@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "title": "Plan 100 · Pipelines",
+    "subtitle": "可复用的做事流水线；默认会死，少数才能活",
+    "updated": "2026-10-09",
+    "charter": "data/charter.json",
+    "governance": {
+      "activeSlots": 8,
+      "ttlDays": 90,
+      "archiveAfterDormantDays": 90
+    }
+  },
+  "pipelines": [
+    {
+      "id": "data-report-org",
+      "title": "数据分析型汇报材料组织",
+      "lane": "active",
+      "status": "doing",
+      "principles": [
+        "通俗但不删数据",
+        "没有新定义词汇，写给第一次阅读的人",
+        "顺着读者的疑问组织结构，而不是按照资料本身的结构"
+      ],
+      "whyLose": "若丢掉这条，汇报会重新按资料目录堆砌：读得费劲、数被概括掉、第一次看的人跟不上。",
+      "signal": "一份材料能让没看过原始资料的人，只靠正文完成判断，且分项数据仍完整可查。",
+      "mergeOf": "新建：尚无同类「读者疑问驱动」的汇报组织流水线可并入。",
+      "playbook": "pipelines/data-report-org.md",
+      "added": "2026-10-09",
+      "renewed": "2026-10-09",
+      "lastReviewed": ""
+    },
+    {
+      "id": "work-attitude",
+      "title": "如何减少对工作的消极态度",
+      "lane": "active",
+      "status": "doing",
+      "principles": [
+        "中性的事情调整心态：不要把自己的事情和工作的事情对立，他们的工作内容不同，但是对人训练的能力是共通的。比如果汇报能力就是沟通能力，团队能力就是就是你出去玩的组织能力",
+        "恶性的事情调整心态：不要下意识恶化别人和事情，所谓的妖魔化。否则很容易沉溺在消极的情绪中，让本身不一定坏的事情变成必然的坏"
+      ],
+      "whyLose": "若丢掉这条，一遇烦事就会把「我的事」和「工作」对立，或把人和事妖魔化，消极情绪自我加油，把可处理的事写成注定很坏。",
+      "signal": "同一类触点出现时，能先分清中性/恶性，并完成一次「共通能力对照」或「还原事实句」，而不是空转抱怨。",
+      "mergeOf": "新建：与汇报组织流水线不同域；针对工作情绪分型处置，无可并入对象。",
+      "playbook": "pipelines/work-attitude.md",
+      "added": "2026-10-09",
+      "renewed": "2026-10-09",
+      "lastReviewed": ""
+    }
+  ]
+}
